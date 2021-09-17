@@ -829,6 +829,7 @@ func rebuildImpl(
 		AllowOverwrite:        buildOpts.AllowOverwrite,
 		ASCIIOnly:             validateASCIIOnly(buildOpts.Charset),
 		IgnoreDCEAnnotations:  validateIgnoreDCEAnnotations(buildOpts.TreeShaking),
+		ForceTreeShaking:      buildOpts.ForceTreeShaking,
 		GlobalName:            validateGlobalName(log, buildOpts.GlobalName),
 		CodeSplitting:         buildOpts.Splitting,
 		OutputFormat:          validateFormat(buildOpts.Format),
@@ -1312,6 +1313,7 @@ func transformImpl(input string, transformOpts TransformOptions) TransformResult
 		MinifyIdentifiers:       transformOpts.MinifyIdentifiers,
 		ASCIIOnly:               validateASCIIOnly(transformOpts.Charset),
 		IgnoreDCEAnnotations:    validateIgnoreDCEAnnotations(transformOpts.TreeShaking),
+		ForceTreeShaking:        transformOpts.ForceTreeShaking,
 		AbsOutputFile:           transformOpts.Sourcefile + "-out",
 		KeepNames:               transformOpts.KeepNames,
 		UseDefineForClassFields: useDefineForClassFieldsTS,
@@ -1322,6 +1324,7 @@ func transformImpl(input string, transformOpts TransformOptions) TransformResult
 			SourceFile: transformOpts.Sourcefile,
 		},
 	}
+	println(1)
 	if options.Stdin.Loader == config.LoaderCSS {
 		options.CSSBanner = transformOpts.Banner
 		options.CSSFooter = transformOpts.Footer
